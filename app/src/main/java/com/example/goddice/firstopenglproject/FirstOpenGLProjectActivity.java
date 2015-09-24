@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class FirstOpenGLProjectActivity extends AppCompatActivity {
     private GLSurfaceView glSurfaceView;
@@ -25,8 +26,34 @@ public class FirstOpenGLProjectActivity extends AppCompatActivity {
         {
             glSurfaceView.setEGLContextClientVersion(2);
             glSurfaceView.setRenderer(new FirstOpenGLProjectRenderer());
+            rendererSet = true;
         }
-        setContentView(R.layout.activity_first_open_glproject);
+        else
+        {
+            Toast.makeText(this, "This device does not support OpenGL ES 2.0", Toast.LENGTH_LONG).show();
+        }
+        //setContentView(R.layout.activity_first_open_glproject);
+        setContentView(glSurfaceView);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        if (rendererSet)
+        {
+            glSurfaceView.onPause();
+        }
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        if (rendererSet)
+        {
+            glSurfaceView.onResume();
+        }
     }
 
     @Override
