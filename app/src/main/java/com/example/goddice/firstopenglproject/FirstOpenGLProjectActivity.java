@@ -5,7 +5,6 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ConfigurationInfo;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -23,19 +22,9 @@ public class FirstOpenGLProjectActivity extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         mGLSurfaceView = new MySurfaceView(this);
-        if (detectOpenGLES20())
-        {
-            mGLSurfaceView.setEGLContextClientVersion(2);
-            mGLSurfaceView.setRenderer(new RippleRenderer(this));
-        }
-        else
-        {
-            Log.e("Water Ripple", "OpenGL ES 2.0 not supported on device. Exiting...");
-            finish();
-        }
         setContentView(mGLSurfaceView);
-        //mGLSurfaceView.requestFocus();
-        //mGLSurfaceView.setFocusableInTouchMode(true);
+        mGLSurfaceView.requestFocus();
+        mGLSurfaceView.setFocusableInTouchMode(true);
     }
 
     private boolean detectOpenGLES20()

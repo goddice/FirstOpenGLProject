@@ -70,14 +70,14 @@ public class Rectangle
     {
         mVertexShader=ShaderUtil.loadFromAssetsFile("vertex.sh", mv.getResources());
         mFragmentShader=ShaderUtil.loadFromAssetsFile("frag.sh", mv.getResources());
-        mProgram = createProgram(mVertexShader, mFragmentShader);
-        maPositionHandle = GLES20.glGetAttribLocation(mProgram, "aPosition");
-        maTexCoorHandle= GLES20.glGetAttribLocation(mProgram, "aTexCoor");
+        //mProgram = createProgram(mVertexShader, mFragmentShader);
+        //maPositionHandle = GLES20.glGetAttribLocation(mProgram, "aPosition");
+        //maTexCoorHandle= GLES20.glGetAttribLocation(mProgram, "aTexCoor");
     }
     
     public void drawSelf(int texId)
     {
-    	 GLES20.glUseProgram(mProgram);        
+    	 //GLES20.glUseProgram(mProgram);
 
          GLES20.glVertexAttribPointer  
          (
