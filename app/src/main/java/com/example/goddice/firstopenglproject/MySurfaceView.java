@@ -15,13 +15,26 @@ import android.widget.Toast;
 
 class MySurfaceView extends GLSurfaceView 
 {
-	private final float TOUCH_SCALE_FACTOR = 180.0f/320;
-    private SceneRenderer mRenderer;
+	public final float TOUCH_SCALE_FACTOR = 180.0f/320;
+    public final int resolution = 256;
+    public final float perturbance = 0.03f;
+
+    public SceneRenderer mRenderer;
 	
-	private float mPreviousY;
-    private float mPreviousX;
+	public float mPreviousY;
+    public float mPreviousX;
     
-    int textureId;
+    public int [] texture = new int[2];
+    public int backgroundTexture;
+    public int backgroundWidth;
+    public int backgroundHight;
+
+    public int [] framebuffer = new int[2];
+
+    public void initTextures() // Init textures
+    {
+
+    }
 	
 	public MySurfaceView(Context context) {
         super(context);
@@ -107,13 +120,7 @@ class MySurfaceView extends GLSurfaceView
                     e.printStackTrace();
                 }
             }
-            GLUtils.texImage2D
-                    (
-                            GLES20.GL_TEXTURE_2D,
-                            0,
-                            bitmapTmp,
-                            0
-                    );
+            GLUtils.texImage2D(GLES20.GL_TEXTURE_2D, 0, bitmapTmp, 0);
             bitmapTmp.recycle();
         }catch (Exception e)
         {

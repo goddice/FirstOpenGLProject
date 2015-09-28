@@ -8,7 +8,10 @@ import android.opengl.GLES20;
 
 public class Rectangle
 {	
-	int mProgram;
+	int mDropProgram;
+    int []mUpdateProgram = new int[2];
+    int mRenderProgram;
+
     int maPositionHandle;
     int maTexCoorHandle;
     String mVertexShader;
