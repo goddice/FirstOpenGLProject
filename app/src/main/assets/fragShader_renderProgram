@@ -8,6 +8,7 @@ varying vec2 backgroundCoord;
 
 void main() {
     vec2 offset = -texture2D(samplerRipples, ripplesCoord).ba;
+    //vec2 offset = vec2(0.0f, 0.0f);
     float specular = pow(max(0.0, dot(offset, normalize(vec2(-0.6, 1.0)))), 4.0);
     gl_FragColor = texture2D(samplerBackground, backgroundCoord + offset * perturbance) + specular;
 }
