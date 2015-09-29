@@ -211,12 +211,12 @@ class MySurfaceView extends GLSurfaceView
         {
             //Log.e(TAG, "rendering");
 
-            //computeTextureBoundaries();
+            computeTextureBoundaries();
 
             GLES20.glViewport(0, 0, backgroundWidth, backgroundHeight);
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
-            GLES20.glUseProgram(dropProgram);
+            GLES20.glUseProgram(renderProgram);
 
             GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
             GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, backgroundTexture);
@@ -237,7 +237,7 @@ class MySurfaceView extends GLSurfaceView
 
         public void updateTexture()
         {
-            computeTextureBoundaries();
+            //computeTextureBoundaries();
 
             GLES20.glViewport(0, 0, resolution, resolution);
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
@@ -369,6 +369,7 @@ class MySurfaceView extends GLSurfaceView
             try
             {
                 initTextures();
+                Log.e(TAG, "Initialize successful");
             }
             catch (Exception e)
             {
