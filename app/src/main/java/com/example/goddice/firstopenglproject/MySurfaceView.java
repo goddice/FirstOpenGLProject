@@ -213,10 +213,10 @@ class MySurfaceView extends GLSurfaceView
 
             computeTextureBoundaries();
 
+            GLES20.glUseProgram(renderProgram);
             GLES20.glViewport(0, 0, backgroundWidth, backgroundHeight);
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
 
-            GLES20.glUseProgram(renderProgram);
 
             GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
             GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, backgroundTexture);
@@ -320,13 +320,13 @@ class MySurfaceView extends GLSurfaceView
         {
             if (mStrength > 0.0001)
             {
+                GLES20.glUseProgram(dropProgram);
                 GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, framebuffer[0]);
                 GLES20.glViewport(0, 0, resolution, resolution);
 
                 GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
                 GLES20.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-                GLES20.glUseProgram(dropProgram);
 
                 GLES20.glActiveTexture(GLES20.GL_TEXTURE0);
                 GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, texture[1]);
